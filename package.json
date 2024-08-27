@@ -1,0 +1,29 @@
+{
+  "name": "maybeoneday-public",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "autoprefixer": "^10.4.19",
+    "cors": "^2.8.5",
+    "csurf": "^1.11.0",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.3.1",
+    "openai": "^4.52.3",
+    "package.json": "^2.0.1",
+    "pm2": "^5.4.2",
+    "postcss": "^8.4.39",
+    "socket.io": "^4.7.5",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.6"
+  }
+}

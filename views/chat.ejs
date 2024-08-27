@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maybe One Day...</title>
+    <link href="/css/output.css" rel="stylesheet" />
+    <link rel="icon" href="/img/favicon_black.png" type="image/png" />
+    <style>
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+      #X-cursor,
+      #Y-cursor {
+        display: inline-block;
+        width: 8px;
+        height: 15px;
+        animation: blink 0.5s infinite;
+        vertical-align: middle;
+      }
+      #X-cursor {
+        background-color: #fa00d8;
+      }
+      #Y-cursor {
+        background-color: #00ff2f;
+      }
+      .message-text {
+        font-size: 0.75rem;
+      }
+      .message-timestamp {
+        font-size: 0.5rem;
+        color: white;
+        position: absolute;
+        bottom: 2px;
+        right: 5px;
+        opacity: 0.8;
+      }
+      .message-bubble {
+        position: relative;
+        padding-bottom: 1.5rem;
+      }
+      .chat-window {
+        height: 70vh; /* Set a fixed height */
+        overflow-y: auto;
+        scroll-behavior: smooth; /* For smooth scrolling */
+      }
+      .scroll-button {
+        position: fixed;
+        right: 20px;
+        padding: 10px;
+        background-color: rgba(
+          74,
+          85,
+          104,
+          0.7
+        ); /* Semi-transparent background */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 1000;
+        transition: opacity 0.3s;
+      }
+      #scroll-to-bottom {
+        bottom: 20px;
+      }
+      #scroll-to-top {
+        top: 20px;
+      }
+
+        #current-message-interval {
+    font-weight: bold;
+  color: #00ff2f;
+  }
+
+      .pulsating-text {
+        animation: textPulse 2s infinite;
+      }
+      @keyframes textPulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+      .user-info-wrapper {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 16px;
+        border: 2px dotted #00ff2f;
+        border-radius: 20px;
+      }
+
+      .user-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      
+    </style>
+  </head>
+  <body
+    class="bg-black text-green-500 font-mono flex flex-col items-center min-h-screen m-0 p-0"
+  >
+    <header
+      class="w-full py-4 px-6 bg-gradient-to-r from-green-900 to-blue-900"
+    >
+      <div class="flex justify-center items-center max-w-6xl mx-auto">
+        <div class="user-info-wrapper">
+          <div class="user-info">
+            <div
+              id="active-users"
+              class="text-white text-sm font-semibold pulsating-text"
+            >
+              <!-- 42 Active Users -->
+            </div>
+            <!-- <div
+              id="current-message-interval"
+              class="text-white text-xs pulsating-text"
+            >
+              Message Interval: 5s
+            </div> -->
+            <div
+              id="current-message-interval"
+              class="text-xs pulsating-text"
+            >
+              <!-- Next message in: --m --s -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="chat-container w-full flex flex-col items-center flex-grow">
+      <div
+        id="chat-window"
+        class="chat-window w-11/12 max-w-3xl p-8 m-4 text-center border-2 border-green-500 flex flex-col"
+      ></div>
+    </main>
+    <button id="scroll-to-bottom" class="scroll-button">↓</button>
+    <button id="scroll-to-top" class="scroll-button">↑</button>
+    <script src="/js/client.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+  </body>
+</html>
